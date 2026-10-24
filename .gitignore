@@ -1,30 +1,45 @@
 # ==========================================================
-# RAW DATA - DO NOT COMMIT
+# RAW OPENNEURO DATASET - NEVER COMMIT
 # ==========================================================
 
+OpenNeuro_ds008786_v1.0.1/
 OpenNeuro_ds008786*/
-ds008786*/
+ds008786/
+
+**/OpenNeuro_ds008786_v1.0.1/
+**/OpenNeuro_ds008786*/
+
+fPET_mqBOLD_AIML/OpenNeuro_ds008786_v1.0.1/
+**/fPET_mqBOLD_AIML/OpenNeuro_ds008786_v1.0.1/
+
 raw_dataset/
 raw_data/
 
-*.nii
-*.nii.gz
+# Raw DICOM data
 *.dcm
 
 # ==========================================================
-# GIT / PYTHON TEMP FILES
+# NOTEBOOK / PYTHON TEMPORARY FILES
 # ==========================================================
 
-.git/
+.ipynb_checkpoints/
 __pycache__/
 *.pyc
-.ipynb_checkpoints/
+*.pyo
 
 # ==========================================================
-# SECRETS
+# SECRETS - NEVER COMMIT
 # ==========================================================
 
 .env
 *.key
-github_token.txt
 credentials.json
+github_token.txt
+token.txt
+
+# ==========================================================
+# OS TEMPORARY FILES
+# ==========================================================
+
+.DS_Store
+Thumbs.db
