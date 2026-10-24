@@ -1,0 +1,64 @@
+### STAGE 3 - locate dataset
+[WARN] Dataset is not at /content/drive/MyDrive/PET_MRI; using /content/drive/MyDrive/fPET_mqBOLD_AIML/OpenNeuro_ds008786_v1.0.1. Results still go to /content/drive/MyDrive/PET_MRI/Results.
+[INFO] DATA_ROOT = /content/drive/MyDrive/fPET_mqBOLD_AIML/OpenNeuro_ds008786_v1.0.1
+### STAGE 4 - file inventory
+[INFO] 552 NIfTI files; 16 subjects; 0 suspiciously small files
+### STAGE 5 - select files, confirm paired subjects
+[INFO] Paired subjects (CMRglc+CMRO2+CBF+OEF, REST+STIM, MNI): n=12 -> ['sub-001', 'sub-004', 'sub-007', 'sub-010', 'sub-011', 'sub-014', 'sub-015', 'sub-016', 'sub-017', 'sub-018', 'sub-019', 'sub-020']
+[INFO] Paired with CBV in both conditions: n=11 -> ['sub-004', 'sub-007', 'sub-010', 'sub-011', 'sub-014', 'sub-015', 'sub-016', 'sub-017', 'sub-018', 'sub-019', 'sub-020']
+[INFO] Subjects with fPET but missing mqBOLD in MNI: ['sub-003', 'sub-009', 'sub-013']
+### STAGE 6-7 - image QC
+[WARN] CMRglc: median non-zero value 0.0155 is far from the paper's GM median 33.4 -> check units before trusting results.
+[WARN] CBF: median non-zero value 2.21e-09 is far from the paper's GM median 52.2 -> check units before trusting results.
+### STAGE 8 - atlas
+[INFO] Atlas grid (91, 109, 91); atlas voxels 132032; atlas∩GM(p>0.5) 94224
+### STAGE 9a - tSNR mask
+[INFO] tSNR sub-001: cortical 15th pct = 18.4
+[INFO] tSNR sub-002: cortical 15th pct = 23.7
+[INFO] tSNR sub-004: cortical 15th pct = 13.3
+[INFO] tSNR sub-007: cortical 15th pct = 13.3
+[INFO] tSNR sub-010: cortical 15th pct = 21.4
+[INFO] tSNR sub-011: cortical 15th pct = 21.0
+[INFO] tSNR sub-014: cortical 15th pct = 12.8
+[INFO] tSNR sub-015: cortical 15th pct = 23.9
+[INFO] tSNR sub-016: cortical 15th pct = 23.3
+[INFO] tSNR sub-017: cortical 15th pct = 14.8
+[INFO] tSNR sub-018: cortical 15th pct = 21.2
+[INFO] tSNR sub-019: cortical 15th pct = 21.1
+[INFO] tSNR sub-020: cortical 15th pct = 20.8
+[INFO] tSNR mask removes 9.9% of cortical GM voxels
+### STAGE 9b-10 - ROI extraction
+[INFO] Group masks found: ['BOLD', 'CBF', 'CMRO2', 'CMRglc']
+[INFO] sub-001: extracted in 4s, valid voxels 24704, r(CMRglc,CBF)=0.50
+[INFO] sub-004: extracted in 7s, valid voxels 24591, r(CMRglc,CBF)=0.48
+[INFO] sub-007: extracted in 5s, valid voxels 25494, r(CMRglc,CBF)=0.47
+[INFO] sub-010: extracted in 5s, valid voxels 19948, r(CMRglc,CBF)=0.52
+[INFO] sub-011: extracted in 6s, valid voxels 26654, r(CMRglc,CBF)=0.56
+[INFO] sub-014: extracted in 4s, valid voxels 24786, r(CMRglc,CBF)=0.48
+[INFO] sub-015: extracted in 5s, valid voxels 26255, r(CMRglc,CBF)=0.41
+[INFO] sub-016: extracted in 6s, valid voxels 25586, r(CMRglc,CBF)=0.41
+[INFO] sub-017: extracted in 5s, valid voxels 26376, r(CMRglc,CBF)=0.49
+[INFO] sub-018: extracted in 5s, valid voxels 26532, r(CMRglc,CBF)=0.43
+[INFO] sub-019: extracted in 5s, valid voxels 25625, r(CMRglc,CBF)=0.60
+[INFO] sub-020: extracted in 5s, valid voxels 24117, r(CMRglc,CBF)=0.55
+### STAGE 11-12 - dataframe
+[INFO] ROIs kept per subject: sub-001:100, sub-004:99, sub-007:100, sub-010:95, sub-011:99, sub-014:100, sub-015:100, sub-016:100, sub-017:100, sub-018:100, sub-019:100, sub-020:100
+### STAGE 13 - reproduction gate
+[INFO] Reproduction gate passed: False  (RM-ANOVA F=0.81, p=0.567; FDR-significant ΔOGI ROIs = 100%)
+[WARN] Reproduction gate FAILED: resting OGI or its change outside the BOLD mask is far from the paper. Likely causes: MNI-space approximation, the public STIM CMRO2 variant (desc-30perc), masking choices. Continuing because STRICT_GATE=False - interpret ML results with this in mind.
+### STAGE 14-17 - modelling engine
+### STAGE 15-18 - Experiment 1
+[INFO] nested LOSO finished in 2.1s; 12 outer folds x 7 models
+[INFO] numpy ridge matches scikit-learn Pipeline(StandardScaler, Ridge) exactly
+### STAGE 19 - metrics
+[INFO] Identification accuracy (individual pattern) = 0.75 (chance = 0.08); median rank of own map = 1.0
+### STAGE 19b - coupling slope
+### STAGE 19c - permutation test
+[INFO] observed median Δr (full - template) = 0.0219; 0 permutations already on disk
+[INFO] Subject-pairing permutation p = 0.0020 (N=500)
+### STAGE 20-22 - Experiment 2: coupling deviation D
+[INFO] check passed: fixed-OGI D equals -Δlog(OGI) (max diff 4.4e-16)
+[INFO] full: 100/100 ROIs with FDR-significant D (0 positive)
+### STAGE 22b - sensitivity analyses
+### STAGE 23 - figures
+### STAGE 24-25 - final summary
